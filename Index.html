@@ -1,0 +1,48 @@
+<audio id="valentineMusic" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    // Floating hearts generator
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = '💖'; // Varied the heart a bit
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+        document.body.appendChild(heart);
+        setTimeout(() => { heart.remove(); }, 5000);
+    }
+    setInterval(createHeart, 300);
+
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    const question = document.getElementById('question');
+    const subtext = document.getElementById('subtext');
+    const music = document.getElementById('valentineMusic');
+
+    // The "Runaway No" Button
+    noBtn.addEventListener('mouseover', () => {
+        const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+        const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+        noBtn.style.left = x + 'px';
+        noBtn.style.top = y + 'px';
+    });
+
+    // The "Yes" Celebration + Music Start
+    yesBtn.addEventListener('click', () => {
+        question.innerHTML = "Yay! See you soon, Tasbiha! 🥰";
+        subtext.innerHTML = "I've got the perfect song for this moment...";
+        
+        // Start the music
+        music.play().catch(error => {
+            console.log("Audio play failed, likely browser permissions:", error);
+        });
+
+        noBtn.style.display = 'none';
+        yesBtn.style.transform = "scale(1.5)";
+        
+        // Bonus: Make more hearts appear faster!
+        setInterval(createHeart, 100);
+    });
+</script>
