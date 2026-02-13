@@ -1,4 +1,4 @@
-          <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -13,7 +13,8 @@
       background: linear-gradient(135deg, #ffe6f0, #fff);
       font-family: Arial, sans-serif;
       color: #3a2a33;
-      overflow: hidden;
+      overflow: hidden; /* keep hearts from creating scrollbars */
+      position: relative;
     }
     .box {
       background: white;
@@ -23,7 +24,7 @@
       max-width: 400px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.15);
       position: relative;
-      overflow: hidden;
+      z-index: 10; /* ensures buttons stay above hearts */
     }
     h1 { color: #ff4f9a; margin-bottom: 10px; }
     h2 { margin: 20px 0 15px; }
@@ -35,6 +36,8 @@
       border: none;
       cursor: pointer;
       font-size: 14px;
+      z-index: 11; /* buttons always above hearts */
+      position: relative;
     }
     .yes {
       background: #ff4f9a;
@@ -51,6 +54,8 @@
       display: none;
       margin-top: 15px;
       font-weight: bold;
+      position: relative;
+      z-index: 11;
     }
 
     /* Floating hearts */
@@ -63,6 +68,7 @@
       animation: floatUp 5s linear forwards;
       opacity: 0.8;
       pointer-events: none;
+      z-index: 1; /* hearts behind buttons */
     }
     .heart::before,
     .heart::after {
@@ -89,7 +95,7 @@
     <h2>Will you be my Valentine? 💘</h2>
 
     <button class="yes" onclick="showYesMessage()">Yes 💕</button>
-    <button class="no" onmouseenter="moveNo(this)">😌 Are you really ready to miss out on the Extremely Satisfying CLITORIS PLEASURES?</button>
+    <button class="no" onmouseenter="moveNo(this)">😌 Are you really ready to miss out on us?</button>
 
     <div id="msg"></div>
   </div>
@@ -103,9 +109,8 @@
     }
 
     function moveNo(btn) {
-      btn.style.position = "relative";
-      btn.style.left = (Math.random()*80 - 40) + "px";
-      btn.style.top = (Math.random()*60 - 30) + "px";
+      btn.style.left = (Math.random() * 80 - 40) + "px";
+      btn.style.top = (Math.random() * 60 - 30) + "px";
     }
 
     function createHearts(count) {
@@ -117,9 +122,7 @@
         heart.style.animationDuration = (4 + Math.random() * 2) + "s";
         document.body.appendChild(heart);
 
-        setTimeout(() => {
-          heart.remove();
-        }, 5000);
+        setTimeout(() => heart.remove(), 5000);
       }
     }
   </script>
