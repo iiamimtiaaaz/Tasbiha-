@@ -104,7 +104,7 @@
     <h2>Will you be my Valentine for this year as well as for the rest of them?💘</h2>
 
     <button class="yes" onclick="showYesMessage()">Yes 💕</button>
-    <button class="no"  onclick="showYesMessage()">NO 💦Do you really want to miss out on the Extremely Satisfying CLITORIS PLEASURES?</button>
+    <button class="no"  onclick="showYesMessage()">NO 💦</button>
 
     <div id="msg"></div>
   </div>
@@ -117,12 +117,12 @@
       createHearts(25);
     }
 
-    function moveNo(btn) {
-      // Move NO button slightly around to be playful
-      btn.style.left = (Math.random() * 40 - 20) + "px";
-      btn.style.top = (Math.random() * 30 - 15) + "px";
+    function showYesMessage() {
+      const msg = document.getElementById("msg")
+      msg.textContent = "Do you really want to miss out on the Extremely Satisfying CLITORIS PLEASURES?";
+      msg.style.display = "block";
+      createHearts(25);
     }
-
     function createHearts(count) {
       for (let i = 0; i < count; i++) {
         const heart = document.createElement("div");
