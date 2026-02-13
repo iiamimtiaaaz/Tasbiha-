@@ -1,82 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>For Tasbiha ❤️</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background-color: #ffeef8; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; 
-            font-family: sans-serif; 
-            overflow: hidden; 
-        }
-        .container {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.3);
-            text-align: center;
-            z-index: 100;
-            width: 90%;
-            max-width: 400px;
-        }
-        h1 { color: #d63384; font-size: 1.5rem; margin-bottom: 20px; }
-        .btn-group { height: 50px; position: relative; margin-top: 20px; }
-        button {
-            padding: 12px 25px;
-            font-size: 1rem;
-            border-radius: 50px;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        #yesBtn { background: #ff4d94; color: white; }
-        #noBtn { background: #ffb3d9; color: #d63384; position: absolute; left: 55%; }
-        .heart { position: absolute; top: -10%; font-size: 20px; animation: fall linear forwards; }
-        @keyframes fall {
-            to { transform: translateY(110vh) rotate(360deg); }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Dearest Tasbiha</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffe6f0, #fff);
+      font-family: Arial, sans-serif;
+    }
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 400px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    h1 { color: #ff4f9a; }
+    button {
+      margin: 10px;
+      padding: 12px 18px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .yes {
+      background: #ff4f9a;
+      color: white;
+    }
+    .no {
+      background: white;
+      border: 2px dashed #ff4f9a;
+    }
+    #msg {
+      display: none;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1 id="msg">Tasbiha, will you be my Valentine? ❤️</h1>
-        <div class="btn-group">
-            <button id="yesBtn">YES!</button>
-            <button id="noBtn">No</button>
-        </div>
+  <div class="box">
+    <h1>Dearest Tasbiha 💖</h1>
+    <p>You’ve been my strength, my calm, and my home.</p>
+
+    <h2>Will you be my Valentine? 💘</h2>
+
+    <button class="yes" onclick="yes()">Yes 💕</button>
+    <button class="no" onclick="move(this)">😌 Are you really ready to miss out on us?</button>
+
+    <div id="msg">
+      Thank you for being with me on my hardest of times and for being my HOME 🏡💗
     </div>
+  </div>
 
-    <script>
-        function createHeart() {
-            const h = document.createElement('div');
-            h.className = 'heart';
-            h.innerHTML = '❤️';
-            h.style.left = Math.random() * 100 + 'vw';
-            h.style.animationDuration = (Math.random() * 3 + 2) + 's';
-            document.body.appendChild(h);
-            setTimeout(() => h.remove(), 5000);
-        }
-        setInterval(createHeart, 300);
-
-        const no = document.getElementById('noBtn');
-        const moveNo = () => {
-            no.style.left = Math.random() * 80 + '%';
-            no.style.top = (Math.random() * 100 - 50) + 'px';
-        };
-        no.addEventListener('touchstart', (e) => { e.preventDefault(); moveNo(); });
-        no.addEventListener('mouseover', moveNo);
-
-        document.getElementById('yesBtn').addEventListener('click', () => {
-            document.getElementById('msg').innerHTML = "Yay! Best day ever! 🥰";
-            no.style.display = 'none';
-            document.getElementById('yesBtn').style.transform = "scale(1.2)";
-        });
-    </script>
+  <script>
+    function yes() {
+      document.getElementById("msg").style.display = "block";
+    }
+    function move(btn) {
+      btn.style.position = "relative";
+      btn.style.left = Math.random()*80 - 40 + "px";
+      btn.style.top = Math.random()*60 - 30 + "px";
+    }
+  </script>
 </body>
 </html>
